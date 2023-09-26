@@ -87,7 +87,7 @@ class MainApi {
   }
   
   const mainApi = new MainApi({
-    address: 'https://a.ia-stepanov.nomoredomains.work',
+    address: 'https://api.helga.movies.nomoredomains.xyz',
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       'Content-Type': 'application/json',
