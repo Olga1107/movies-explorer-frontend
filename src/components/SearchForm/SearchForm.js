@@ -1,47 +1,52 @@
+import React, { useEffect, useState, useRef } from 'react';
 import './SearchForm.css';
-import { useEffect, useState } from 'react';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import { useLocation } from 'react-router-dom';
 
-const SearchForm = ({ handleGetMovies, filmsTumbler, filmsInputSearch, handleGetMoviesTumbler }) => {
-  const [inputSearch, setInputSearch] = useState('');
-  const [tumbler, setTumbler] = useState(false);
+const SearchForm = ({ onSubmit, onInputSearchError, initialName = '', isChecked, handleInputChecked }) => {
+    const [searchValue, setSearchValue] = useState(initialName);
+    const location = useLocation();
+    const searchInputRef = useRef(null);
 
-  function handleInputChange(evt) {
-    setInputSearch(evt.target.value);
-  }
+    useEffect(() => {
+        setSearchValue(initialName);
+    }, [initialName]);
 
-  function handleTumblerChange(evt) {
-    const newTumbler = !tumbler;
-    setTumbler(newTumbler);
-    handleGetMoviesTumbler(newTumbler);
-  }
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        if (location.pathname === '/movies') localStorage.setItem('name', searchValue);
+        if (searchValue !== '') {
+            onSubmit(searchValue, isChecked);
+        } else {
+            onInputSearchError();
+        }
+    };
 
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    handleGetMovies(inputSearch);
-  }
+    const handleInputChange = (evt) => {
+        setSearchValue(evt.target.value);
+    };
 
-  useEffect(() => {
-    setTumbler(filmsTumbler);
-    setInputSearch(filmsInputSearch);
-  }, [filmsTumbler, filmsInputSearch]);
+    const handleCheckboxChange = () => {
+        handleInputChecked();
+        onSubmit(searchValue, !isChecked);
+    };
 
-  return (
-    <form className="search">
-      <div className="search__container">
-        <input className="search__input" placeholder="Фильм" type="text" value={inputSearch || ''} onChange={handleInputChange} required />
-        <button type="submit" className="search__button" onClick={handleSubmit}>Найти</button>
-      </div>
-      <div className="search__toggle">
-        <p className="search__films">Короткометражки</p>
-        <label className="search__tumbler">
-
-          <input className="search__checkbox" type="checkbox" value={tumbler} checked={tumbler} onChange={handleTumblerChange} />
-          
-          <span className="search__slider" />
-        </label>
-      </div>
-    </form>
-  );
+    return (
+        <form className="search-form" onSubmit={handleSubmit} noValidate>
+            <div className="search-form__container">
+                <input
+                    className="search-form__input"
+                    placeholder="Фильм"
+                    onChange={handleInputChange}
+                    required
+                    value={searchValue}
+                    ref={searchInputRef}
+                />
+                <button className="link search-form__button" type="submit" />
+            </div>
+            <FilterCheckbox onChange={handleCheckboxChange} isChecked={isChecked} />
+        </form>
+    );
 };
 
 export default SearchForm;

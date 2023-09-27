@@ -1,0 +1,52 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+  
+  .modal-content {
+    position: relative;
+    background-color: #272727;
+    padding: 5px;
+    border-radius: 8px;
+    max-width: 600px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .modal-content {
+        min-width: 600px;
+    }
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    font-size: 30px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    color: #aaa;
+  }
+
+  @media screen and (min-width: 768px) {
+    .modal-close {
+        right: -30px;
+        font-size: 40px;
+    }
+  }
+  
+  .modal-content iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 4px;
+  }

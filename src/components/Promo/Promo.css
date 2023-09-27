@@ -1,112 +1,150 @@
 .promo {
-    display: flex;
-    justify-content: space-between;
-    background-color: #073042;
-    padding: 75px 70px;
+  display: grid;
+  box-sizing: border-box;
+  justify-items: center;
+  background-color: #073042;
+}
+
+.promo__container {
+  display: grid;
+  padding: 0 10px 0;
+  justify-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+  @media screen and (min-width: 768px) {
+      .promo__container {
+          padding: 0 44px 0;
+      }
   }
-  
-  .promo__container {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
+
+  @media screen and (min-width: 1280px) {
+      .promo__container {
+          width: 1280px;
+          min-height: 574px;
+          padding: 75px 70px 50px;
+          grid-template-columns: repeat(2, auto);
+          justify-content: space-between;
+      }   
   }
-  
-  .promo__title {
-    max-width: 640px;
-    margin: 0;
-    color: #fff;
-    font-size: 50px;
-    font-weight: 400;
-    line-height: 58px;
-  }
-  
-  .promo__text {
-    max-width: 310px;
-    margin: 0;
-    padding: 36px 0 0;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 16px;
-    opacity: 50%;
-  }
-  
-  .promo__link {
-    margin: 146px 0 0;
-    padding: 10px 20px;
-    border: 1px solid rgba(255, 255, 255, .6);
-    border-radius: 3px;
-    color: #fff;
-    font-size: 12px;
-    text-decoration: none;
-    transition: opacity .2s linear;
-  }
-  
-  .promo__link:hover {
-    opacity: .6;
-    cursor: pointer;
-  }
-  
+
+.promo__info {
+  display: grid;
+  justify-items: center;
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__info {
+      align-content: start;
+      grid-template-rows: repeat(2, auto) 1fr;
+      max-width: 640px;
+      justify-items: start;
+  }   
+}
+
+.promo__logo {
+  margin-top: 70px;
+  width: 210px;
+  height: 206px;
+}
+
+
+@media screen and (min-width: 768px) {
   .promo__logo {
-    width: 310px;
-    height: 304px;
+      margin-top: 140px;
+      width: 310px;
+      height: 304px;
   }
-  
-  @media all and (max-width: 800px) {
-    .promo {
-      flex-direction: column-reverse;
-      align-items: center;
-      padding: 0 0 76px;
-    }
-  
-    .promo__container {
-      align-items: center;
-      text-align: center;
-    }
-  
-    .promo__title {
-      max-width: 680px;
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__logo {
+      margin-top: 0;
+      order: 1;
+  }   
+}
+
+.promo__title {
+  color: #fff;
+  margin-top: 44px;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: -1px;
+}
+
+@media screen and (min-width: 768px) {
+  .promo__title {
+      margin-top: 48px;
       font-size: 40px;
-      line-height: 50px;
-    }
-  
-    .promo__text {
+      line-height: 50.5px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__title {
+      margin-top: 0;
+      text-align: start;
+      font-size: 50px;
+      letter-spacing: 0.3px;
+  }   
+}
+
+.promo__text {
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 24px;
+  margin-bottom: 0;
+  padding: 0 18px;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+  .promo__text {
       max-width: 260px;
-      padding: 21px 0 0;
-    }
-  
-    .promo__link {
-      margin: 92px 0 0;
-    }
-  
-    .promo__logo {
-      padding: 140px 0 49px;
-    }
+      margin-top: 22px;
   }
-  
-  @media all and (max-width: 540px) {
-    .promo {
-      padding: 0 0 30px;
-    }
-  
-    .promo__title {
-      font-size: 30px;
-      line-height: 38px;
-      letter-spacing: -0.04em;
-    }
-  
-    .promo__text {
-      padding: 24px 0 0;
-    }
-  
-    .promo__link {
-      margin: 80px 0 0;
-    }
-  
-    .promo__logo {
-      width: 210px;
-      height: 206px;
-      padding: 70px 0 44px;
-    }
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__text {
+      margin-top: 36px;
+      padding: 0;
+      max-width: 310px;
+      text-align: start;
+  }   
+}
+
+.promo__link {
+  margin-top: 80px;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .promo__link {
+      margin-top: 92px;
+      margin-bottom: 76px;
   }
-  
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__link {
+      align-self: end;
+      margin-top: 0px;
+      margin-bottom: 25px;
+  }   
+}

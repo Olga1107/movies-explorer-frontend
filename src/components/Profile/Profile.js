@@ -1,75 +1,172 @@
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import './Profile.css';
-import { useState, useContext } from 'react';
+import AuthTitle from '../AuthTitle/AuthTitle';
+import AuthInput from '../AuthInput/AuthInput';
+import AuthSubmit from '../AuthSubmit/AuthSubmit';
+import { validateName, validateEmail } from '../../utils/validation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
-import mainApi from '../../utils/MainApi';
 
-const Profile = ({ onSignOut, openPopup }) => {
-  const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState(currentUser.name);
-  const [lastName, setLastName] = useState(currentUser.name);
-  const [email, setEmail] = useState(currentUser.email);
-  const [lastEmail, setLastEmail] = useState(currentUser.email);
-  const [isVisibleButton, setVisibleButton] = useState(false);
+const Profile = ({ onSignOut, onUpdateUser, errorSubmitApi, clearErrorSubmitApi }) => {
+    const currentUser = useContext(CurrentUserContext);
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+    const [username, setUsername] = useState(currentUser.name || '');
+    const [email, setEmail] = useState(currentUser.email || '');
+    const [isEditMode, setIsEditMode] = useState(false);
+    const [errorMessages, setErrorMessages] = useState([]);
+    const saveButtonStyleClass = 'auth__button-submit_type_profile-save';
+    const [isSaveButtonActive, setIsSaveButtonActive] = useState(false);
 
-    mainApi.updateUserInfo({ name, email }).then(() => {
-      setVisibleButton(false);
-      setLastName(name);
-      setLastEmail(email);
-      openPopup('Данные успешно изменены!');
-    })
-    .catch((err) => {
-      openPopup(`Что-то пошло не так! ${err}`);
-    });
-  };
+    useEffect(() => {
+        setIsSaveButtonActive(!errorSubmitApi);
+    }, [errorSubmitApi]);
 
-  function handleNameChange(evt) {
-    const value = evt.target.value;
-    setName(value);
+    const [isUsernameValid, setIsUsernameValid] = useState(true);
+    const [isEmailValid, setIsEmailValid] = useState(true);
 
-    if (value !== lastName) {
-      setVisibleButton(true);
-    } else {
-      setVisibleButton(false);
-    }
-  }
+    // Using useRef to hold the initial username and email values
+    const initialUsernameRef = useRef(currentUser.name || '');
+    const initialEmailRef = useRef(currentUser.email || '');
 
-  function handleEmailChange(evt) {
-    const value = evt.target.value;
-    setEmail(value);
+    useEffect(() => {
+        initialUsernameRef.current = currentUser.name || '';
+        initialEmailRef.current = currentUser.email || '';
+    }, [currentUser]);
 
-    if (value !== lastEmail) {
-      setVisibleButton(true);
-    } else {
-      setVisibleButton(false);
-    }
-  }
+    useEffect(() => {
+        const isUsernameChanged = username !== initialUsernameRef.current;
+        const isEmailChanged = email !== initialEmailRef.current;
+        setIsSaveButtonActive(isEditMode && (isUsernameChanged || isEmailChanged));
+    }, [username, email, isEditMode]);
 
-  return (
-    <section className="profile">
-      <form className="profile__form" onSubmit={handleSubmit}>
-        <h3 className="profile__greeting">Привет, {name}!</h3>
-        <div className="profile__inputs">
-          <p className="profile__text">Имя</p>
-          <div className="profile__area profile__area_type_name">
-            <input className="profile__settings" value={name} onChange={handleNameChange} />
-          </div>
-          <div className="profile__area profile__area_type_email">
-            <input className="profile__settings" value={email} onChange={handleEmailChange} />
-          </div>
-          <p className="profile__text">E-mail</p>
-        </div>
-        <button className="profile__button" disabled={!isVisibleButton}>
-          Редактировать
-        </button>
-        <button className="profile__link" type="button" onClick={onSignOut}>
-          Выйти из аккаунта
-        </button>
-      </form>
-    </section>
-  );
+    const validateForm = () => {
+        const errors = [];
+
+        const trimmedUsername = username.trim();
+        const trimmedEmail = email.trim();
+
+        const usernameValidationResult = validateName(trimmedUsername);
+        const emailValidationResult = validateEmail(trimmedEmail);
+
+        if (isEditMode) {
+            if (usernameValidationResult !== '') {
+                errors.push(usernameValidationResult);
+            }
+            if (emailValidationResult !== '') {
+                errors.push(emailValidationResult);
+            }
+        }
+
+        setIsUsernameValid(usernameValidationResult === '');
+        setIsEmailValid(emailValidationResult === '');
+
+        setIsSaveButtonActive(errors.length === 0);
+
+        setErrorMessages([...errors]);
+
+        return errors.length === 0;
+    };
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+
+        onUpdateUser({
+            email: email,
+            name: username,
+        });
+    };
+
+    useEffect(() => {
+        if (!isEditMode) {
+            setErrorMessages([]);
+        }
+    }, [isEditMode]);
+
+    const handleSaveProfile = () => {
+        if (validateForm()) {
+            setIsEditMode(false);
+            setErrorMessages([]);
+            onUpdateUser({
+                email: email,
+                name: username,
+            }).then(() => {
+                clearErrorSubmitApi();
+            });
+        }
+    };
+
+    const toggleEditing = () => {
+        setIsEditMode((prevMode) => !prevMode);
+    };
+
+    return (
+        <main className="auth">
+            <form className="auth__form auth__form_type_profile" onSubmit={handleSubmit} noValidate>
+                <AuthTitle title={`Привет, ${username}!`} isProfile={true} />
+                {errorMessages.length > 0 && (
+                    <div className="auth__form_type_profile-error-messages">
+                        {errorMessages.map((error, index) => (
+                            <span key={index} className="auth__form_type_profile-error-message">
+                                {error}
+                            </span>
+                        ))}
+                    </div>
+                )}
+                <div className={`auth__inputs auth__inputs_type_profile ${isEditMode ? 'editing' : ''}`}>
+                    <AuthInput
+                        name="Имя"
+                        idName="name"
+                        type="type"
+                        value={username}
+                        isProfile={true}
+                        onChange={(value) => {
+                            setUsername(value);
+                            validateForm();
+                        }}
+                        disabled={!isEditMode}
+                        isValid={isUsernameValid}
+                    />
+
+                    <AuthInput
+                        name="E-mail"
+                        idName="email"
+                        type="email"
+                        value={email}
+                        isProfile={true}
+                        onChange={(value) => {
+                            setEmail(value);
+                            validateForm();
+                        }}
+                        disabled={!isEditMode}
+                        isValid={isEmailValid}
+                    />
+                </div>
+                {isEditMode ? (
+                    <AuthSubmit
+                        textButton="Сохранить"
+                        textPreLink=""
+                        textLink=""
+                        isProfile={true}
+                        urlLinkSubmit=""
+                        onClick={handleSaveProfile}
+                        customStyleClass={saveButtonStyleClass}
+                        disabled={!isSaveButtonActive}
+                        textInfoSubmit={errorSubmitApi}
+                    />
+                ) : (
+                    <AuthSubmit
+                        textButton="Редактировать"
+                        textPreLink=""
+                        textLink="Выйти из аккаунта"
+                        isProfile={true}
+                        urlLinkSubmit="/logout"
+                        onClick={toggleEditing}
+                        onSignOut={onSignOut}
+                        textInfoSubmit={errorSubmitApi}
+                    />
+                )}
+            </form>
+        </main>
+    );
 };
 
 export default Profile;

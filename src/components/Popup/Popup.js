@@ -1,14 +1,37 @@
+import React, { useEffect } from 'react';
 import './Popup.css';
 
-const Popup = ({ text, isOpen, onClose }) => {
-  return (
-    <section className={`popup ${isOpen ? 'popup_opened' : ''}`}>
-      <div className="popup__container">
-        <p className="popup__text">{text}</p>
-        <button className="popup__close" type="button" onClick={onClose} />
-      </div>
-    </section>
-  );
+const Popup = ({ name, isOpen, onClose, children }) => {
+    const classPopupOpened = `${isOpen ? 'popup_opened' : ''}`;
+    const handleOverlayClose = (evt) => evt.target === evt.currentTarget && onClose();
+
+    const handleEscClosePopup = (evt) => {
+        if (evt.key !== 'Escape') return;
+
+        onClose();
+    };
+
+    const setHandleEscClosePopup = () => {
+        document.addEventListener('keydown', handleEscClosePopup);
+    };
+
+    const removeHandleEscClosePopup = () => {
+        document.removeEventListener('keydown', handleEscClosePopup);
+    };
+
+    useEffect(() => {
+        isOpen ? setHandleEscClosePopup() : removeHandleEscClosePopup();
+    }, [isOpen]);
+
+    return (
+        <div className={`popup popup_type_${name} ${classPopupOpened}`} onClick={handleOverlayClose}>
+            <div className="popup__container">
+                <button className="popup__button-close" onClick={onClose} type="button" aria-label="Закрыть"></button>
+                {children}
+            </div>
+        </div>
+    );
 };
 
 export default Popup;
+

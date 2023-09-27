@@ -1,25 +1,31 @@
+import React from 'react';
 import './Footer.css';
 
-const Footer = () => {
-  return (
+const Footer = () => (
     <footer className="footer">
-      <h3 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h3>
-      <div className="footer__container">
-        <p className="footer__copyright">&copy; 2023</p>
-
-        <nav className="footer__nav">
-          <ul className="footer__nav-list">
-            <li className="footer__nav-item">
-              <a className="footer__nav-link" href="https://practicum.yandex.ru/web/" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
-            </li>
-            <li className="footer__nav-item">
-              <a className="footer__nav-link" href="https://github.com/Olga1107" target="_blank" rel="noreferrer">Github</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <div className="footer__container">
+            <h2 className="footer__title">Учебный проект Яндекс.Практикум х BestFilm</h2>
+            <nav className="footer__nav">
+                <a
+                    className="link footer__nav-link"
+                    href="https://practicum.yandex.ru/"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    Яндекс.Практикум
+                </a>
+                <a
+                    className="link footer__nav-link"
+                    href="https://github.com/Olga1107"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    Github
+                </a>
+            </nav>
+            <p className="footer__nav-copyright">&copy; 2023</p>
+        </div>
     </footer>
-  );
-};
+);
 
 export default Footer;

@@ -1,163 +1,112 @@
-.search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 70px 0;
-    padding: 81px 0 43px;
-    border-bottom: 1px solid #e8e8e8;
+.search-form {
+  padding: 60px 10px 0;
+  position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .search-form {
+      padding: 60px 30px 0;
   }
-  
-  .search__container {
-    display: flex;
-    justify-content: space-between;
-    width: 80.5%;
-    margin: 0 0 40px;
-    padding: 6px;
-    border: 1px solid rgba(170, 170, 170, .2);
-    border-radius: 50px;
+}
+
+@media screen and (min-width: 1280px) {
+  .search-form {
+      display: flex;
+      padding: 80px 70px 94px;
+      justify-content: space-between;
   }
-  
-  .search__input {
-    width: 100%;
-    padding: 0 15px;
-    outline: none;
-    border: none;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 18px;
+}
+
+.search-form::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background-color: rgba(170, 170, 170, 0.2);
+  z-index: -2;
+}
+
+@media screen and (min-width: 768px) {
+  .search-form::after {
+      left: 30px;
+      right: 30px;
   }
-  
-  .search__input:focus {
-    width: 90%;
-    outline: 1px solid black;
-    border-radius: 50px;
+}
+
+@media screen and (min-width: 1280px) {
+  .search-form::after {
+      left: 70px;
+      right: 70px;
   }
-  
-  .search__input::placeholder {
-    color: #a0a0a0;
+}
+
+.search-form__container {
+  border: 1.5px solid rgba(170, 170, 170, 0.2);
+  border-radius: 50px;
+  min-width: 297px;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+@media screen and (min-width: 1280px) {
+  .search-form__container {
+      width: 932px;
   }
-  
-  .search__button {
-    padding: 8px 12px;
-    outline: none;
-    border: none;
-    border-radius: 48px;
-    background-color: #3456f3;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 18px;
-    transition: opacity .2s linear;
+}
+
+.search-form__input {
+  padding: 14.5px;
+  border: none;
+  background-color: transparent;
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 8px;
+  flex: 1;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 400;
+  color: #8B8B8B
+}
+
+.search-form__input:focus {
+      border: 2px solid rgba(170, 170, 170, 0.2);
+      border-right: none;
+      border-radius: 50px;
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
   }
-  
-  .search__button:hover {
-    opacity: .6;
-    cursor: pointer;
+
+@media screen and (min-width: 768px) {
+  .search-form__input {
+      font-size: 14px;
+      padding: 17.5px;
   }
-  
-  .search__toggle {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 40px;
+}
+
+.search-form__button {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 8px;
+  background-color: transparent;
+  background-image: url('../../images/find.svg');
+  background-repeat: no-repeat;
+  background-size: 34px;
+  background-position: center;
+  border: none;
+  margin-right: 3.5px;
+  margin-bottom: 2.5px;
+}
+
+@media screen and (min-width: 767px) {
+  .search-form__button {
+      margin-right: 0.5px;
+      margin-bottom: 1.5px;
   }
-  
-  .search__films {
-    margin: 0 0 0 12px;
-    padding-right: 14px;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 18px;
-  }
-  
-  .search__tumbler {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 20px;
-    filter: drop-shadow(0 2px 2px #e5e5e8);
-    cursor: pointer;
-  }
-  
-  .search__checkbox {
-    display: none;
-  }
-  
-  .search__slider {
-    position: absolute;
-    inset: 0;
-    background-color: white;
-    border-radius: 16px;
-    transition: .6s;
-    transform: scale(-1, -1);
-  }
-  
-  .search__slider::before {
-    position: absolute;
-    content: '';
-    height: 16px;
-    width: 16px;
-    left: 1px;
-    bottom: 1px;
-    border: 1px solid #fff;
-    border-radius: 50%;
-    background-color: #2be080;
-  }
-  
-  .search__checkbox:checked + .search__slider {
-    background-color: #2be080;
-  }
-  
-  .search__checkbox:checked + .search__slider::before {
-    transform: translateX(16px);
-  }
-  
-  @media screen and (max-width: 800px) {
-    .search {
-      flex-direction: column;
-      margin: 0 30px 0;
-      padding: 55px 0 17px;
-    }
-  
-    .search__container {
-      width: 98%;
-      padding: 6px;
-      margin: 0 0 37px;
-    }
-  
-    .search__input {
-      padding: 0 11px;
-    }
-  
-    .search__toggle {
-      margin: 0 0 39px;
-    }
-  
-    .search__films {
-      margin: 0;
-    }
-  }
-  
-  @media screen and (max-width: 540px) {
-    .search {
-      margin: 0 15px 0;
-    }
-  
-    .search__container {
-      margin: 0 0 44px;
-    }
-  
-    .search__input {
-      padding: 0 8px;
-      font-size: 11px;
-    }
-  
-    .search__toggle {
-      margin: 0 0 26px;
-    }
-  
-    .search__films {
-      font-size: 11px;
-    }
-  }
+}
   
