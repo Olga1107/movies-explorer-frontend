@@ -3,6 +3,8 @@
   box-sizing: border-box;
   justify-items: center;
   background-color: #073042;
+  font-family: 'Inter';
+  font-weight: 400;
 }
 
 .promo__container {
