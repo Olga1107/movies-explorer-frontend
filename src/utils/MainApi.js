@@ -37,6 +37,7 @@ class Api {
 
     getUser(token) {
         return fetch(`${this._baseUrl}/users/me`, {
+            method: 'GET',
             headers: {
                 authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json',
@@ -60,6 +61,7 @@ class Api {
 
     getMovies() {
         return fetch(`${this._baseUrl}/movies`, {
+            method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
                 'Content-Type': 'application/json',
