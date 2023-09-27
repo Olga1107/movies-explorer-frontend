@@ -2,6 +2,8 @@
   display: grid;
   box-sizing: border-box;
   justify-items: center;
+  font-family: 'Inter';
+  font-weight: 500;
 }
 
 .header_type_main {
