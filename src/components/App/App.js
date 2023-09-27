@@ -155,14 +155,12 @@ function App() {
             .then(() => {
                 onLogin({ email, password });
             })
-            .catch((res) => {
-                res.then((err) => {
+            .catch((err) => {
                     if (err.statusCode === 400) {
                         setErrorSubmitApi('При регистрации пользователя произошла ошибка.');
                     } else {
                         setErrorSubmitApi(err.message);
                     }
-                });
             })
             .finally(() => {
                 setIsRegisterLoader(false);
