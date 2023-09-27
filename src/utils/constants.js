@@ -1,6 +1,6 @@
-const BASE_MAIN_URL = 'http://api.helga.movies.nomoredomains.xyz';
-const BASE_IMAGE_URL = 'http://api.nomoreparties.co/';
-const BASE_MOVIES_URL = 'http://api.nomoreparties.co/beatfilm-movies';
+const BASE_MAIN_URL = 'https://api.helga.movies.nomoredomains.xyz';
+const BASE_IMAGE_URL = 'https://api.nomoreparties.co/';
+const BASE_MOVIES_URL = 'https://api.nomoreparties.co/beatfilm-movies';
 const PATTERN_EMAIL =
     '^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@' + '[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$';
 
