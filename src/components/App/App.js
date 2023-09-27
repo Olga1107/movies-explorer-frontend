@@ -96,12 +96,10 @@ function App() {
             .then((user) => {
                 setCurrentUser({ ...user, isLoggedIn: true });
             })
-            .catch((res) => {
-                res.then((err) => {
+            .catch((err) => {
                     onSignOut();
                     console.log(err.message);
                 });
-            });
     };
 
     const onUpdateUser = ({ email, name }) => {
