@@ -57,6 +57,7 @@ function App() {
             getMovies();
             getSavedMovies();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isTokenChecked, currentUser.isLoggedIn]);
 
     const checkToken = async (token) => {
@@ -86,6 +87,7 @@ function App() {
         } else {
             setIsTokenChecked(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUser.isLoggedIn]);
 
     const getUser = (token) => {
@@ -198,7 +200,6 @@ function App() {
         moviesApi
             .getMovies()
             .then((dataMovies) => {
-                // Применяем фильтры к фильмам на основе имени и состояния чекбокса
                 let filteredMovies = filterMovies(dataMovies, name);
                 if (isShort) {
                     filteredMovies = filteredMovies.filter((movie) => movie.duration <= 40);
@@ -287,6 +288,7 @@ function App() {
         if (routesHeaderDisabled.includes(location.pathname)) {
             setIsHeaderDisabled(true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
     const clearErrorSubmitApi = () => {
