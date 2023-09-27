@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ac225e2a.css",
+    "main.js": "/static/js/main.9b96ee56.js",
+    "static/js/787.5fef94a4.chunk.js": "/static/js/787.5fef94a4.chunk.js",
+    "static/media/avatar.jpg": "/static/media/avatar.5f20632ae31759c96200.jpg",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/pic__COLOR_landing-logo.svg": "/static/media/pic__COLOR_landing-logo.4850206398467b2311114f25733e5cf2.svg",
+    "static/media/find.svg": "/static/media/find.20548422a76c122b4c81.svg",
+    "static/media/tooltip-error.svg": "/static/media/tooltip-error.df8eddf661ff88f2d0ef.svg",
+    "static/media/icon__COLOR_icon-main.svg": "/static/media/icon__COLOR_icon-main.072f4da3c4ef0a026711.svg",
+    "static/media/tooltip-success.svg": "/static/media/tooltip-success.1b6082f862eac35e2514.svg",
+    "index.html": "/index.html",
+    "static/media/logo.svg": "/static/media/logo.25a2943c9f92a986c1fa6c2157b97a2f.svg",
+    "static/media/button-like-unactive.svg": "/static/media/button-like-unactive.15b9949b6f747b3118a0.svg",
+    "static/media/icon-burger.svg": "/static/media/icon-burger.111cfc3a3545a9ff785c.svg",
+    "static/media/button-like-active.svg": "/static/media/button-like-active.b3917aaa7195bca16ee4.svg",
+    "static/media/CLOSE.svg": "/static/media/CLOSE.128b4b070d39259dc44e.svg",
+    "static/media/arrow.svg": "/static/media/arrow.df4728086c2add652b48.svg",
+    "static/media/tumb__COLOR_tumbler-on.svg": "/static/media/tumb__COLOR_tumbler-on.28a196e6d5a3aae564ea.svg",
+    "static/media/tumbler-off.svg": "/static/media/tumbler-off.6c870c055315f4c049a8.svg",
+    "main.ac225e2a.css.map": "/static/css/main.ac225e2a.css.map",
+    "main.9b96ee56.js.map": "/static/js/main.9b96ee56.js.map",
+    "787.5fef94a4.chunk.js.map": "/static/js/787.5fef94a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac225e2a.css",
+    "static/js/main.9b96ee56.js"
+  ]
+}

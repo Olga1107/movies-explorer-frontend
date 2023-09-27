@@ -1,7 +1,6 @@
 .App {
-    max-width: 1280px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
+  min-width: 320px;
+  position: relative;
+  display: grid;
+  width: 100%;
+}

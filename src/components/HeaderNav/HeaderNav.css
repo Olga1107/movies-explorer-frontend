@@ -1,0 +1,230 @@
+.navigation {
+    display: grid;
+    background-color: transparent;
+    position: relative;
+  }
+  
+  @media screen and (min-width: 1280px) {
+    .navigation {
+      justify-content: end;; 
+    }
+  }
+  
+  @media screen and (min-width:320px) and (max-width: 1279px) { 
+    .navigation_type_menu {
+        width: 100%;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+  }
+
+.navigation__container {
+    display: grid;
+    width: 100%;
+}
+
+  @media screen and (min-width: 1280px) {
+    .navigation__container {
+      grid-auto-flow: column;
+      justify-items: end;
+      align-items: center;
+    }
+  }
+
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+    .navigation__container_type_menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+      background-color: #202020;
+    }
+  }
+  
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .navigation__container_type_menu {
+      width: 67.6%;
+    }
+  }
+
+
+.navigation__links {
+    padding-top: 86px;
+    display: grid;
+    row-gap: 24px;
+    align-content: start;
+    justify-items: center;
+} 
+
+  @media screen and (min-width: 768px) {
+    .navigation__links {
+        row-gap: 28px;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .navigation__links {
+        padding-top: 0;
+        grid-auto-flow: column;
+        justify-items: end;
+        column-gap: 20px;
+    }
+  }
+
+.navigation__links_invisibled {
+    display: none;
+}
+
+  @media screen and (min-width: 1280px) {
+    .navigation__links_invisibled {
+        display:grid;
+    }
+  }
+
+.navigation__link {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1279px) {
+    .navigation__link.active {
+    position: relative;
+  }
+
+  .navigation__link.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+  }
+
+  @media screen and (min-width: 768px) {
+    .navigation__link.active::after {
+      bottom: -4px;
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navigation__link.active {
+    font-weight: 500;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation__link {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+@media screen and (min-width: 1280px) {
+  .navigation__links .navigation__link:first-child {
+    display: none;
+  }
+}
+
+.navigation__profile {
+    position: relative;
+    min-height: 32px;
+    margin-top: 46px;
+    margin-bottom: 46px;
+    padding: 10px 40px 10px 10px;
+    justify-self: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation__profile {
+        margin-bottom: 92px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation__profile {
+        margin: 0 0 0 50px;
+        justify-items: end;
+        padding: 8px 42px 10px 2px;    
+      }
+}
+
+.navigation__profile_invisibled {
+    display: none;
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation__profile_invisibled {
+        display: grid;
+    }
+}
+
+.navigation__profile::after {
+    position: absolute;
+    content: '';
+    width: 30px;
+    height: 30px;
+    top: 1px;
+    right: -1px;
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-color: #313131;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20%;
+}
+
+
+.navigation__button {
+    width: 38px;
+    height: 38px;
+    justify-self: end;
+    background-image: url(../../images/icon-burger.svg);
+    background-size: cover;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+}  
+
+@media screen and (min-width: 768px) {
+    .navigation__button {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation__button {
+        display: none;
+    }
+}
+
+.navigation__button_type_close {
+    padding: 0;
+    width: 58px;
+    height: 58px;
+    background-image: url(../../images/CLOSE.svg);
+    background-size: 30px;
+    background-position: center;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation__button_type_close {
+        width: 74px;
+        height: 74px;
+    }
+}

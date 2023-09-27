@@ -1,0 +1,41 @@
+.header__auth {
+    display: grid;
+    grid-auto-columns: min-content;
+    grid-auto-flow: column;
+    justify-content: end;
+    align-items: center;
+    column-gap: 14px;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 768px){
+    .header__auth {
+        column-gap: 30px;
+    }
+}
+
+.header__auth-link {
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+@media screen and (min-width: 768px){
+    .header__auth-link {
+        font-size: 12px;
+    }
+}
+
+.header__auth-link_type_login {
+        padding: 5px 12px;
+        color: black;
+        background-color: #3DDC84;
+        border-radius: 3px;
+}
+
+@media screen and (min-width: 768px){
+    .header__auth-link_type_login  {
+        padding: 8px 20px;
+    }
+}

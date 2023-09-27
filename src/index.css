@@ -1,13 +1,44 @@
-@import url('./vendor/fonts/fonts.css');
-@import url('./vendor/normalize.css');
+@import "./vendor/normalize.css";
+@import "./vendor/fonts/fonts.css";
 
-body {
-  margin: 0;
+.page {
   font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  color: #FFFFFF;
+  background-color: #202020;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
-  text-rendering: optimizeLegibility;
+}
+
+.link {
+  text-decoration: none;
+  color: #fff
+}
+
+.link:hover {
+  cursor: pointer;
+  opacity: 0.2;
+  transition: 2s;
+}
+
+.hidden {
+  display: none;
+}
+
+.input:focus {
+  outline: 2px solid #3DDC84;
+}
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 7px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(28, 229, 159, 0.5);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 }

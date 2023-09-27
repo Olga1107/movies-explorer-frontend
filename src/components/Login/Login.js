@@ -1,85 +1,83 @@
-import '../Form/Form.css';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../images/logo.svg';
-import isEmail from 'validator/es/lib/isEmail';
+import React, { useState, useContext, useEffect } from 'react';
+import './Login.css';
+import AuthTitle from '../AuthTitle/AuthTitle';
+import AuthSubmit from '../AuthSubmit/AuthSubmit';
+import AuthInput from '../AuthInput/AuthInput';
+import { validateEmail, validatePassword } from '../../utils/validation';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Login({ onLogin }) {
-  const [inputValues, setInputValues] = useState({});
-  const [errors, setErrors] = useState({});
-  const [isValid, setIsValid] = useState(false);
+const Login = ({ isLoader, onLogin, errorSubmitApi }) => {
+    const currentUser = useContext(CurrentUserContext);
 
-  const handleInputChange = (evt) => {
-    const target = evt.target;
-    const name = target.name;
-    const value = target.value;
+    const [email, setEmail] = useState(currentUser.email || '');
+    const [password, setPassword] = useState('');
+    const [isFormValid, setIsFormValid] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
-    if (name === 'email') {
-      if (!isEmail(value)) {
-        target.setCustomValidity('Некорректый адрес почты');
-      } else {
-        target.setCustomValidity('');
-      }
-    }
+    useEffect(() => {
+        const isEmailValid = validateEmail(email) === '';
+        const isPasswordValid = validatePassword(password) === '';
+        setIsFormValid(isEmailValid && isPasswordValid && !isLoading);
+    }, [email, password, isLoading]);
 
-    setInputValues({ ...inputValues, [name]: value });
-    setErrors({ ...errors, [name]: target.validationMessage });
-    setIsValid(target.closest('form').checkValidity());
-  };
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+        setIsLoading(true);
 
-    onLogin(inputValues);
-  };
+        onLogin({
+            email: email,
+            password: password,
+        }).finally(() => {
+            setIsLoading(false);
+        });
+    };
 
-  return (
-    <section className="form">
-      <div className="form__container">
-        <Link to="/" className="form__link">
-          <img className="form__logo" src={logo} alt="Логотип Movies Explorer"></img>
-        </Link>
-        <h2 className="form__title">Рады видеть!</h2>
-        <form className="form__inputs" onSubmit={handleSubmit}>
-          <div className="form__items">
-            <label className="form__item">
-              <p className="form__item-text">E-mail</p>
-              <input
-                className={`form__field ${errors.email ? 'form__field_color-error' : ''}`}
-                name="email"
-                type="email"
-                placeholder="Введите почту"
-                value={inputValues.email || ''}
-                onChange={handleInputChange}
-                required
-              />
-              <p className={`form__error ${errors.email ? 'form__error-display' : ''}`}>{errors.email}</p>
-            </label>
+    const handleEmailChange = (newValue) => {
+        setEmail(newValue);
+    };
 
-            <label className="form__item">
-              <p className="form__item-text">Пароль</p>
-              <input
-                className={`form__field ${errors.password ? 'form__field_color-error' : ''}`}
-                name="password"
-                type="password"
-                minLength="6"
-                placeholder="Введите пароль"
-                value={inputValues.password || ''}
-                onChange={handleInputChange}
-                required
-              />
-              <p className={`form__error ${errors.password ? 'form__error-display' : ''}`}>{errors.password}</p>
-            </label>
-          </div>
-          <button className={`form__button ${isValid ? "" : "form__button_disabled"}`} type="submit" disabled={!isValid ? true : ''}>Войти</button>
-        </form>
-        <p className="form__text">
-          Ещё не зарегистрированы?
-          <Link to="/signup" className="form__link">Регистрация</Link>
-        </p>
-      </div>
-    </section>
-  );
-}
+    const handlePasswordChange = (newValue) => {
+        setPassword(newValue);
+    };
+
+    return (
+        <main className="auth">
+            <form className="auth__form" onSubmit={handleSubmit} noValidate>
+                <AuthTitle title={`Рады видеть!`} />
+                <div className="auth__inputs">
+                    <AuthInput
+                        name="E-mail"
+                        idName="email"
+                        type="email"
+                        value={email}
+                        onChange={handleEmailChange}
+                        isValid={validateEmail(email) === ''}
+                        disabled={isLoading}
+                    />
+                    <span className="auth__input-error">{validateEmail(email)}</span>
+                    <AuthInput
+                        name="Пароль"
+                        idName="password"
+                        type="password"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        isValid={validatePassword(password) === ''}
+                        disabled={isLoading}
+                    />
+                    <span className="auth__input-error">{validatePassword(password)}</span>
+                </div>
+                <AuthSubmit
+                    textButton={`${isLoader ? 'Идет авторизация...' : 'Войти'}`}
+                    textPreLink="Еще не зарегистрированы? "
+                    textLink="Регистрация"
+                    textInfoSubmit={errorSubmitApi}
+                    urlLinkSubmit="/signup"
+                    disabled={!isFormValid}
+                />
+            </form>
+        </main>
+    );
+};
 
 export default Login;
