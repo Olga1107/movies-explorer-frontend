@@ -97,8 +97,8 @@ class Api {
           }).then(this._checkResponse);
       }
 
-    removeMovie(movieId) {
-        return fetch(`${this._baseUrl}/movies/${movieId}`, {
+    removeMovie(movie) {
+        return fetch(`${this._baseUrl}/movies/${movie._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`,
