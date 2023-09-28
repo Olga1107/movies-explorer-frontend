@@ -226,13 +226,13 @@ function App() {
             });
     };
 
-    const removeMovie = (movie) => {
+    const removeMovie = (movieId) => {
         return mainApi
-            .removeMovie(movie)
+            .removeMovie(movieId)
             .then(() => {
-                setSavedMovies(savedMovies.filter((item) => item._id !== movie._id));
+                setSavedMovies(savedMovies.filter((item) => item._id !== movieId));
 
-                const newLikedMovies = { ...getLikedMoviesFromStorage(), [movie._id]: false };
+                const newLikedMovies = { ...getLikedMoviesFromStorage(), [movieId]: false };
                 saveLikedMoviesToStorage(newLikedMovies);
             })
             .catch((res) => {
