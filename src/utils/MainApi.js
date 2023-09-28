@@ -69,28 +69,33 @@ class Api {
         }).then(this._checkResponse);
     }
 
-    createMovie({ country, director, duration, year, description, image, trailerLink, id, nameRU, nameEN }) {
-        return fetch(`${this._baseUrl}/movies`, {
-            method: 'POST',
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                country,
-                director,
-                duration,
-                year,
-                description,
-                image: BASE_IMAGE_URL + image.url,
-                trailerLink,
-                thumbnail: BASE_IMAGE_URL + image.formats.thumbnail.url,
-                movieId: id,
-                nameRU: nameRU || nameEN,
-                nameEN: nameRU || nameEN,
-            }),
-        }).then(this._checkResponse);
-    }
+    createMovie(data) {
+        console.log('массив', data)
+          return fetch(`${this._baseUrl}/movies`, {
+              method: 'POST',
+              headers: {
+                  authorization: `Bearer ${localStorage.getItem('token')}`,
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                country: data.country,
+                director: data.director,
+                duration: data.duration,
+                year: data.year,
+                description: data.description,
+                image: data.image.url
+                  ? `https://api.nomoreparties.co${data.image.url}`
+                  : data.image,
+                trailerLink: data.trailerLink,
+                thumbnail: data.image.formats
+                  ? `https://api.nomoreparties.co${data.image.formats.thumbnail.url}`
+                  : data.image,
+                movieId: data.id || data.movieId,
+                nameRU: data.nameRU || data.nameEN,
+                nameEN: data.nameEN || data.nameRU,
+              }),
+          }).then(this._checkResponse);
+      }
 
     removeMovie(movie) {
         return fetch(`${this._baseUrl}/movies/${movie._id}`, {
