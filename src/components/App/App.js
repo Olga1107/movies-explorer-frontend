@@ -226,18 +226,20 @@ function App() {
             });
     };
 
-    const removeMovie = (movieId) => {
+    const removeMovie = (movie) => {
         return mainApi
-            .removeMovie(movieId)
+            .removeMovie(movie)
             .then(() => {
-                setSavedMovies(savedMovies.filter((item) => item._id !== movieId));
+                setSavedMovies(savedMovies.filter((item) => item._id !== movie._id));
 
-                const newLikedMovies = { ...getLikedMoviesFromStorage(), [movieId]: false };
+                const newLikedMovies = { ...getLikedMoviesFromStorage(), [movie._id]: false };
                 saveLikedMoviesToStorage(newLikedMovies);
             })
             .catch((res) => {
                 res.then((err) => {
+                    debugger
                     console.log(err.message);
+                    console.log(movie._id)
                 });
             });
     };
