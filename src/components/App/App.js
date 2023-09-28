@@ -181,7 +181,7 @@ function App() {
         if (savedMoviesLoaded) {
             setSavedMovies([...filterMovies(savedMovies, name)]);
         } else {
-            mainApi
+           mainApi
                 .getMovies()
                 .then((data) => {
                     setSavedMovies(data);

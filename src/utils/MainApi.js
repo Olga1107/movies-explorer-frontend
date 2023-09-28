@@ -86,8 +86,8 @@ class Api {
                 trailerLink,
                 thumbnail: BASE_IMAGE_URL + image.formats.thumbnail.url,
                 movieId: id,
-                nameRU,
-                nameEN,
+                nameRU: nameRU || nameEN,
+                nameEN: nameRU || nameEN,
             }),
         }).then(this._checkResponse);
     }
