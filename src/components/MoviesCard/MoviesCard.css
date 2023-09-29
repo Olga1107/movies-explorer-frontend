@@ -1,43 +1,81 @@
 .movies__card {
   display: grid;
-  background-color: #222222;
 }
+
 .movies__card-info {
-  padding: 14px;
+  padding-top: 10px;
   display: grid;
+  align-items: center;
   grid-template-areas:
-  'movie-title movie-button'
-  'movie-duration movie-button'
-  ;
+    'movie-title movie-button'
+    'movie-row movie-row'
+    'movie-duration .';
+}
+
+.movies__card-row {
+  grid-area: movie-row;
+  border-bottom: 1px solid #424242;
+  padding: 25px 0 0;
+  margin: 0 0 6px;
 }
 
 .movies__card-title {
   margin: 0;
-  padding-bottom: 9px;
   grid-area: movie-title;
-  font-size: 15px;
-  font-weight: 500;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 13px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media screen and (max-width: 320px) {
+  .movies__card-title {
+    font-size: 12px;
+  }
 }
 
 .movies__card-duration {
   margin: 0;
+  font-family: 'Inter';
   grid-area: movie-duration;
   font-size: 11px;
   font-weight: 400;
   font-style: normal;
-  color: #8B8B8B
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 320px) {
+  .movies__card-duration {
+    font-size: 10px;
+  }
 }
 
 .movies__card-trailerLink {
   background-color: #222222;
   border: none;
+  padding: 0;
+  height: 151px;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__card-trailerLink {
+    height: 190px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .movies__card-trailerLink {
+    height: 168px;
+  }
 }
 
 .movies__card-button {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   grid-area: movie-button;
   align-self: center;
   justify-self: end;
@@ -51,33 +89,30 @@
 }
 
 .movies__card-button_liked {
-  background-color: #3DDC84;
   background-image: url('../../images/button-like-active.svg');
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.movies__card-button_pined{
+.movies__card-button_pined {
   background-size: 12px;
   background-image: url('../../images/CLOSE.svg');
 }
 
 .movies__card-image {
   width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 768px) {
   .movies__card-image {
-      object-fit: contain;
-      height: 190px;
-      justify-self: center;
+    max-height: 190px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (max-width: 320px) {
   .movies__card-image {
-      object-fit: contain;
-      height: 203px
+    max-height: 168px;
   }
 }

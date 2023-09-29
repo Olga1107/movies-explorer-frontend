@@ -1,22 +1,9 @@
 .notFound {
   grid-template-rows: 1fr auto;
   display: grid;
-  padding-top: 42.5vh;
-  row-gap: 33vh;
-}
-
-@media screen and (min-width: 768px) {
-  .notFound {
-      padding-top: 40vh;
-      row-gap: 15.3vh;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .notFound {
-      padding-top: 36vh;
-      row-gap: 22vh;
-  }
+  color: white;
+  font-family: 'Inter';
+  min-height: 100vh;
 }
 
 .notFound__info {

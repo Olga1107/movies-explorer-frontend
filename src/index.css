@@ -1,6 +1,10 @@
 @import "./vendor/normalize.css";
 @import "./vendor/fonts/fonts.css";
 
+#root {
+  background-color: #6f6e6e;
+}
+
 .page {
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
@@ -21,7 +25,7 @@
 
 .link:hover {
   cursor: pointer;
-  opacity: 0.2;
+  opacity: 0.7;
   transition: 2s;
 }
 
