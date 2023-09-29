@@ -100,6 +100,7 @@ const Profile = ({ onSignOut, onUpdateUser, errorSubmitApi, clearErrorSubmitApi 
 
     return (
         <main className="auth">
+            <section>
             <form className="auth__form auth__form_type_profile" onSubmit={handleSubmit} noValidate>
                 <AuthTitle title={`Привет, ${username}!`} isProfile={true} />
                 {errorMessages.length > 0 && (
@@ -115,7 +116,7 @@ const Profile = ({ onSignOut, onUpdateUser, errorSubmitApi, clearErrorSubmitApi 
                     <AuthInput
                         name="Имя"
                         idName="name"
-                        type="type"
+                        type="text"
                         value={username}
                         isProfile={true}
                         onChange={(value) => {
@@ -165,6 +166,7 @@ const Profile = ({ onSignOut, onUpdateUser, errorSubmitApi, clearErrorSubmitApi 
                     />
                 )}
             </form>
+            </section>
         </main>
     );
 };

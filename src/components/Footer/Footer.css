@@ -1,9 +1,9 @@
 .footer {
   display: grid;
   background-color: #202020;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-weight: 400;
-}  
+}
 
 .footer__disabled {
   display: none;
@@ -12,26 +12,26 @@
 .footer__container {
   display: grid;
   box-sizing: border-box;
-  grid-template-areas: 
-      'footer-title'
-      'footer-nav'
-      'footer-copyright';
+  grid-template-areas:
+    'footer-title'
+    'footer-nav'
+    'footer-copyright';
   padding: 0 10px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .footer__container {
-      grid-template-areas: 
+    grid-template-areas:
       'footer-title footer-title'
       'footer-copyright footer-nav';
-      padding: 0 30px;
+    padding: 0 30px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .footer__container {
-      padding: 0 70px;
-      min-width: 1274px;
+    padding: 0 70px;
+    min-width: 1274px;
   }
 }
 
@@ -42,7 +42,7 @@
   border-bottom: 1px solid #424242;
   text-align: center;
   grid-area: footer-title;
-  color: #8B8B8B;
+  color: #8b8b8b;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -50,7 +50,7 @@
 
 @media screen and (min-width: 768px) {
   .footer__title {
-      font-size: 13px;
+    font-size: 13px;
   }
 }
 
@@ -65,34 +65,50 @@
   font-weight: 400;
 }
 
-@media screen and (min-width: 768px) {
+.footer__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media screen and (min-width: 769px) {
+  .footer__nav-list {
+    flex-direction: row;
+  }
+
   .footer__nav {
-      column-gap: 20px;
-      font-size: 13px;
-      grid-auto-columns: min-content;
-      grid-auto-flow: column;
-      justify-self: end;
-      padding-top: 20px;
+    column-gap: 20px;
+    font-size: 13px;
+    grid-auto-columns: min-content;
+    grid-auto-flow: column;
+    justify-self: end;
+    padding-top: 20px;
   }
 }
 
 .footer__nav-copyright {
   margin: 0;
   padding-top: 30px;
-  text-align: center;
+  padding-bottom: 20px;
+
   grid-area: footer-copyright;
+
+  color: #8b8b8b;
+  font-feature-settings: 'clig' off, 'liga' off;
   font-size: 12px;
   font-style: normal;
-  font-weight: 400;
-  color: #8B8B8B;
-  padding-bottom: 20px;
+  line-height: normal;
+  text-align: center;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .footer__nav-copyright {
-      color: #fff;
-      font-size: 13px;
-      justify-self: start;
-      padding: 20px 0 20px;
+    color: #fff;
+    font-size: 13px;
+    justify-self: start;
+    padding: 20px 0 20px;
   }
 }

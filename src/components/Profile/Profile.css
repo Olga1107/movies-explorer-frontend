@@ -16,4 +16,11 @@
   color: #FF004C;
   display: block;
 }
+
+.auth__form_type_profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: calc(100vh - 74px);
+}
  

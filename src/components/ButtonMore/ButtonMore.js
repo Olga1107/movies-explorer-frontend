@@ -3,7 +3,7 @@ import './ButtonMore.css';
 
 const ButtonMore = ({ onClick }) => {
     return (
-        <button className="button-more" onClick={onClick}>
+        <button className="button-more" onClick={onClick} type="button">
             Ещё
         </button>
     );

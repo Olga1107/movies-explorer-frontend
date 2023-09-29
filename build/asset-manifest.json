@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.c0416df6.css",
-    "main.js": "/static/js/main.32621860.js",
+    "main.css": "/static/css/main.b016690f.css",
+    "main.js": "/static/js/main.8667c978.js",
     "static/js/787.5fef94a4.chunk.js": "/static/js/787.5fef94a4.chunk.js",
-    "static/media/avatar.jpg": "/static/media/avatar.5f20632ae31759c96200.jpg",
+    "static/media/avatar.jpg": "/static/media/avatar.faa58883d0b773f6d28b.jpg",
     "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
     "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
     "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
@@ -25,12 +25,12 @@
     "static/media/arrow.svg": "/static/media/arrow.df4728086c2add652b48.svg",
     "static/media/tumbler-off.svg": "/static/media/tumbler-off.6c870c055315f4c049a8.svg",
     "static/media/tumb__COLOR_tumbler-on.svg": "/static/media/tumb__COLOR_tumbler-on.825cfe567ddd17ca759c.svg",
-    "main.c0416df6.css.map": "/static/css/main.c0416df6.css.map",
-    "main.32621860.js.map": "/static/js/main.32621860.js.map",
+    "main.b016690f.css.map": "/static/css/main.b016690f.css.map",
+    "main.8667c978.js.map": "/static/js/main.8667c978.js.map",
     "787.5fef94a4.chunk.js.map": "/static/js/787.5fef94a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c0416df6.css",
-    "static/js/main.32621860.js"
+    "static/css/main.b016690f.css",
+    "static/js/main.8667c978.js"
   ]
 }

@@ -2,7 +2,7 @@
   grid-template-rows: 1fr auto;
   display: grid;
   color: white;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   min-height: 100vh;
 }
 

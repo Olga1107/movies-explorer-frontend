@@ -39,6 +39,7 @@ const SearchForm = ({
   };
 
   return (
+  <section>
     <form className="search-form" onSubmit={handleSubmit} noValidate>
       <div className="search-form__container">
         <input
@@ -63,6 +64,7 @@ const SearchForm = ({
       </div>
       <div className="search-form__row"></div>
     </form>
+    </section>
   );
 };
 

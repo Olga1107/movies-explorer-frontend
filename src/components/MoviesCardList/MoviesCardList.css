@@ -48,7 +48,7 @@
   font-weight: 400;
   text-align: center;
   color: white;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
 }
 
 @media screen and (min-width: 768px) {

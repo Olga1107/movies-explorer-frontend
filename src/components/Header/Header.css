@@ -2,7 +2,7 @@
   display: grid;
   box-sizing: border-box;
   justify-items: center;
-  font-family: 'Inter';
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-weight: 500;
 }
 

@@ -22,9 +22,14 @@
     color: #3ddc84;
     margin-top: -4px;
     margin-right: -1px;
-  
     outline: 1px solid #202020;
   }
+
+  .checkbox__switcher:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 2s;
+}
   
   @media screen and (min-width: 768px) {
     .checkbox__switcher {
@@ -43,7 +48,7 @@
     color: #fff;
     font-style: normal;
     font-weight: 400;
-    font-family: 'Inter';
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   }
   
   @media screen and (min-width: 768px) {
