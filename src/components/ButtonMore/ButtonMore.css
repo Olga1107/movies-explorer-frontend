@@ -2,15 +2,16 @@
     margin: 50px 0 80px;
     width: 240px;
     height: 36px;
-    border: 1px solid #424242;
+    border: 1px solid #2F2F2F;
     border-radius: 6px;
-    background-color: transparent;
+    background-color: #2F2F2F;
     color: #fff;
     justify-self: center;
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     cursor: pointer;
+    font-family: 'Inter';
 }
 
 @media screen and (min-width: 768px) {

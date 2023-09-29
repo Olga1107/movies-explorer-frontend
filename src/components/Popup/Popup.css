@@ -159,7 +159,7 @@
 }
     .popup__button:hover {
         cursor: pointer;
-        opacity: 0.2;
+        opacity: 0.8;
         transition: 2s;
     }
     .popup__button_disabled {

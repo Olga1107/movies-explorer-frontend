@@ -48,6 +48,10 @@
   .about-me__title {
       grid-area: title;
   }
+
+  .about-me__title {
+     padding: 90px 0 24px;
+  }
 }
 
 .about-me__photo {

@@ -24,8 +24,8 @@
 .auth__button-submit:disabled {
     background-color: #f8f8f8;
     color: #c2c2c2;
-    cursor: not-allowed; /* Добавьте этот стиль, чтобы курсор менялся на "запрещен" при неактивной кнопке */
-    pointer-events: none; /* Используйте этот стиль, чтобы кнопка была неактивной для кликов */
+    cursor: not-allowed; 
+    pointer-events: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -75,8 +75,8 @@
 .link.auth__button-submit.auth__button-submit_type_profile.disabled {
     background-color: #f8f8f8;
     color: #c2c2c2;
-    cursor: not-allowed; /* Добавьте этот стиль, чтобы курсор менялся на "запрещен" при неактивной кнопке */
-    pointer-events: none; /* Используйте этот стиль, чтобы кнопка была неактивной для кликов */
+    cursor: not-allowed; 
+    pointer-events: none;
   }
 
 

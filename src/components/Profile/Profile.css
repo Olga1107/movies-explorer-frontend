@@ -1,3 +1,7 @@
+.auth__form {
+  min-height: 100vh;
+}
+
 .auth__form_type_profile-error-messages {
   display: grid;
   justify-items: center;
@@ -12,4 +16,4 @@
   color: #FF004C;
   display: block;
 }
-  
+ 

@@ -1,31 +1,37 @@
 import React from 'react';
 import './Promo.css';
-import logo from '../../images/pic__COLOR_landing-logo.svg';
+import { Link } from 'react-scroll';
 
 const Promo = () => {
-    /*const handleScroll = () => {
-        const aboutProjectSection = document.getElementById('about-project');
-        if (aboutProjectSection) {
-            aboutProjectSection.scrollIntoView({
-                behavior: 'smooth',
-            });
-        }
-    };*/
-
-    return (
-        <section className="promo">
-            <div className="promo__container">
-                <img src={logo} className="promo__logo" alt="Логотип Планета"></img>
-                <div className="promo__info">
-                    <h1 className="promo__title">Учебный проект студента факультета Веб&#8209;разработки.</h1>
-                   {/*<p className="promo__text">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
-                    <a className="link promo__link" onClick={handleScroll}>
-                        Узнать больше
-                    </a>*/}
-                </div>
-            </div>
-        </section>
-    );
+  return (
+    <section className="promo">
+      <div className="promo__container">
+        <h1 className="promo__title">
+          Учебный проект студента факультета Веб&#8209;разработки.
+        </h1>
+      </div>
+      <nav className="promo__nav">
+        <Link 
+        className="promo__nav-item link"
+        to='about-project'
+        smooth
+        duration={500}
+        >О проекте</Link>
+        <Link 
+        className="promo__nav-item link"
+        to='technologies'
+        smooth
+        duration={500}
+        >Технологии</Link>
+        <Link 
+        className="promo__nav-item link"
+        to='about-me'
+        smooth
+        duration={500}
+        >Студент</Link>
+      </nav>
+    </section>
+  );
 };
 
 export default Promo;
