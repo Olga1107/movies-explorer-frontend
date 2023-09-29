@@ -17,6 +17,7 @@
 @media screen and (min-width: 800px) {
   .search-form {
     padding: 70px 70px 10px;
+    gap: 69px;
   }
 }
 
@@ -31,13 +32,14 @@
   border-radius: 9px;
   background: #2f2f2f;
 
-  padding: 19px;
+  padding: 19px 30px 19px 19px;
   position: relative;
 }
 
 @media screen and (max-width: 768px) {
   .search-form__container {
     gap: 19px;
+    padding: 19px;
   }
 }
 
@@ -87,6 +89,10 @@
   outline: 1px solid #424242;
 }
 
+.search-form__input:hover {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 500px) {
   .search-form__input {
     max-width: 160px;
@@ -134,4 +140,3 @@
     display: block;
   }
 }
-  

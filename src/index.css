@@ -1,5 +1,5 @@
-@import "./vendor/normalize.css";
-@import "./vendor/fonts/fonts.css";
+@import './vendor/normalize.css';
+@import './vendor/fonts/fonts.css';
 
 #root {
   background-color: #6f6e6e;
@@ -8,7 +8,7 @@
 .page {
   font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-style: normal;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #202020;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -20,13 +20,13 @@
 
 .link {
   text-decoration: none;
-  color: #fff
+  color: #fff;
 }
 
 .link:hover {
   cursor: pointer;
   opacity: 0.7;
-  transition: 2s;
+  transition: 0.2s;
 }
 
 .hidden {
@@ -34,7 +34,7 @@
 }
 
 .input:focus {
-  outline: 2px solid #3DDC84;
+  outline: 2px solid #3ddc84;
 }
 
 ::-webkit-scrollbar {
@@ -44,5 +44,5 @@
 ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(28, 229, 159, 0.5);
-  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }

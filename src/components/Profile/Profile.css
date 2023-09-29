@@ -1,5 +1,9 @@
 .auth__form {
   min-height: 100vh;
+  margin: auto;
+
+  color: #fff;
+  font-family: Inter;
 }
 
 .auth__form_type_profile-error-messages {
@@ -13,7 +17,7 @@
 }
 
 .auth__form_type_profile-error-message {
-  color: #FF004C;
+  color: #ff004c;
   display: block;
 }
 
@@ -23,4 +27,3 @@
   justify-content: space-around;
   min-height: calc(100vh - 74px);
 }
- 
