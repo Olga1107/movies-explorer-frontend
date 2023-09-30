@@ -1,4 +1,4 @@
-import { BASE_IMAGE_URL, BASE_MAIN_URL } from './constants';
+import { BASE_MAIN_URL } from './constants';
 
 class Api {
     constructor(baseUrl) {
@@ -70,7 +70,6 @@ class Api {
     }
 
     createMovie(data) {
-        console.log('массив', data)
           return fetch(`${this._baseUrl}/movies`, {
               method: 'POST',
               headers: {

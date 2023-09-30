@@ -1,11 +1,12 @@
 import React from 'react';
 import './HeaderLogo.css';
 import logo from '../../images/logo.svg';
+import { Link } from 'react-router-dom';
 
 const HeaderLogo = () => (
-    <a className="link header__logo-link" href="/">
+    <Link className="link header__logo-link" to="/">
         <img src={logo} className="header__logo" alt="Логотип" />
-    </a>
+    </Link>
 );
 
 export default HeaderLogo;

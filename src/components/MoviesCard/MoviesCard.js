@@ -48,8 +48,7 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie, mode }) => {
   const urlImage =
     location.pathname === '/movies'
       ? `${BASE_IMAGE_URL}${movie.image.url}`
-      : `${BASE_IMAGE_URL}${movie.image.url}`;
-// : movie.image;
+      : movie.image;
   const trailerLink = movie.trailerLink;
 
   return (

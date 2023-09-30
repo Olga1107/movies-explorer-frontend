@@ -9,6 +9,9 @@ const SearchForm = ({
   initialName = '',
   isChecked,
   handleInputChecked,
+  getMovies,
+  movies,
+  setIsFirst
 }) => {
   const [searchValue, setSearchValue] = useState(initialName);
   const location = useLocation();
@@ -20,8 +23,12 @@ const SearchForm = ({
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (location.pathname === '/movies')
+    setIsFirst(false);
+    if (location.pathname === '/movies') {
+      if (movies.length === 0) getMovies();
       localStorage.setItem('name', searchValue);
+      localStorage.setItem('checkbox', isChecked);
+    }
     if (searchValue !== '') {
       onSubmit(searchValue, isChecked);
     } else {
@@ -35,6 +42,11 @@ const SearchForm = ({
 
   const handleCheckboxChange = () => {
     handleInputChecked();
+    setIsFirst(false);
+    if (location.pathname === '/movies') {
+      if (movies.length === 0) getMovies();
+      localStorage.setItem('checkbox', !isChecked);
+    }
     onSubmit(searchValue, !isChecked);
   };
 
