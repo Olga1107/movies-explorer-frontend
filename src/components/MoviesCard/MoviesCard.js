@@ -48,7 +48,8 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie, mode }) => {
   const urlImage =
     location.pathname === '/movies'
       ? `${BASE_IMAGE_URL}${movie.image.url}`
-      : movie.image;
+      : `${BASE_IMAGE_URL}${movie.image.url}`;
+// : movie.image;
   const trailerLink = movie.trailerLink;
 
   return (
@@ -56,16 +57,18 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie, mode }) => {
       <button
         className="link movies__card-trailerLink"
         onClick={handleOpenModal}
+        type="button"
       >
-        <img className="movies__card-image" src={urlImage} alt="Фото" />
+        <img className="movies__card-image" src={urlImage} alt={name} />
       </button>
       <div className="movies__card-info">
-        <p className="movies__card-title">{name}</p>
+        <h2 className="movies__card-title">{name}</h2>
         <button
           className={`movies__card-button ${
             liked ? 'movies__card-button_liked' : ''
           } ${mode === 'liked' ? 'movies__card-button_pined' : ''}`}
           onClick={handleButton}
+          type="button"
         />
         <div className="movies__card-row"></div>
         <p className="movies__card-duration">{duration}</p>

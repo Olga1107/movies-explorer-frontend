@@ -11,7 +11,7 @@ const InfoTooltip = ({ name, buttonText, isError, message, isOpen, onClose, onSu
         <Popup name={name} isOpen={isOpen} onClose={onClose}>
             <div className="popup__info-container">
                 <h3 className={classMessage}>{message}</h3>
-                <button className={`popup__button popup__button_type_submit`} onClick={handleSubmit}>
+                <button className={`popup__button popup__button_type_submit`} onClick={handleSubmit} type="button">
                     {buttonText}
                 </button>
             </div>

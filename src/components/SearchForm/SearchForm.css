@@ -17,6 +17,7 @@
 @media screen and (min-width: 800px) {
   .search-form {
     padding: 70px 70px 10px;
+    gap: 69px;
   }
 }
 
@@ -31,13 +32,14 @@
   border-radius: 9px;
   background: #2f2f2f;
 
-  padding: 19px;
+  padding: 19px 30px 19px 19px;
   position: relative;
 }
 
 @media screen and (max-width: 768px) {
   .search-form__container {
     gap: 19px;
+    padding: 19px;
   }
 }
 
@@ -74,7 +76,7 @@
 
   color: #8b8b8b;
   font-feature-settings: 'clig' off, 'liga' off;
-  font-family: Inter;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -85,6 +87,10 @@
 
 .search-form__input:focus {
   outline: 1px solid #424242;
+}
+
+.search-form__input:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 500px) {
@@ -134,4 +140,3 @@
     display: block;
   }
 }
-  

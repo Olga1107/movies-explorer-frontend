@@ -22,7 +22,7 @@ const HeaderNav = ({ isMain }) => {
     return (
         <div className={`navigation${classNavigationMenu}`}>
             <div className={`navigation__container${classNavigationContainerMenu}`}>
-                <button className={`navigation__button ${classBurgerMenu}`} onClick={onButtonBurgerClick}></button>
+                <button className={`navigation__button ${classBurgerMenu}`} onClick={onButtonBurgerClick} type="button"></button>
                 <nav className={`navigation__links ${classNavigationLinksMenu}`}>
                     <NavLink to="/" className={`${classLink} navigation__link_type_home`} onClick={onButtonBurgerClick}>
                         Главная

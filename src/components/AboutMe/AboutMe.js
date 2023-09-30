@@ -5,7 +5,7 @@ import avatar from '../../images/avatar.jpg';
 const AboutMe = () => (
     <section className="project about-me">
         <h2 className="project__title about-me__title">Студентка</h2>
-        <img src={avatar} className="about-me__photo" alt="Мое фото" />
+        <img src={avatar} className="about-me__photo" alt="Мой портрет крупным планом в очках, голова наклонена в бок" />
         <div className="about-me__info">
             <h3 className="about-me__name">Ольга</h3>
             <p className="about-me__job">Фронтенд-разработчик, 28 лет</p>

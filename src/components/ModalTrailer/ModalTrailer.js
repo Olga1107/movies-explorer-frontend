@@ -51,7 +51,7 @@ const ModalTrailer = ({ onClose, trailerLink }) => {
     return (
         <div className="modal">
             <div className="modal-content">
-                <button className="modal-close" onClick={handleCloseModal}>
+                <button className="modal-close" onClick={handleCloseModal} type="button">
                     &times;
                 </button>
                 <YouTube videoId={getYouTubeVideoId(trailerLink)} opts={opts} />

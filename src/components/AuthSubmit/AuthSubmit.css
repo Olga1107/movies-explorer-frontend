@@ -5,7 +5,19 @@
 }
 
 .auth__submit-container_type_profile {
-    margin-bottom: 40px;
+    margin-bottom: 70px;
+}
+
+@media screen and (max-width: 900px) {
+    .auth__submit-container_type_profile {
+        margin-bottom: 270px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .auth__submit-container_type_profile {
+        margin-bottom: 43px;
+    }
 }
 
 .auth__button-submit {

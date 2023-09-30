@@ -1,22 +1,28 @@
 .button-more {
-    margin: 50px 0 80px;
-    width: 240px;
-    height: 36px;
-    border: 1px solid #2F2F2F;
-    border-radius: 6px;
-    background-color: #2F2F2F;
-    color: #fff;
-    justify-self: center;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: 'Inter';
+  margin: 32px 0 80px;
+  width: 240px;
+  height: 36px;
+  border: 1px solid #2f2f2f;
+  border-radius: 6px;
+  background-color: #2f2f2f;
+  color: #fff;
+  justify-self: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+
+  transition: all 0.2s linear;
+}
+
+.button-more:hover {
+  opacity: 0.8;
 }
 
 @media screen and (min-width: 768px) {
-    .button-more {
-        width: 320px;
-        height: 36px;
-    }
+  .button-more {
+    width: 320px;
+    height: 36px;
+  }
 }
