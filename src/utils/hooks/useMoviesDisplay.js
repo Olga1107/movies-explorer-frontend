@@ -44,7 +44,7 @@ const useMoviesDisplay = ({ movies, isChecked, initialName }) => {
 
     useEffect(() => {
         const foundMovies = filterMovies(movies, initialName);
-        const filterIsCheckedMovies = (filterShortMovies(foundMovies, isChecked) || []);
+        const filterIsCheckedMovies = (filterShortMovies(foundMovies || [], isChecked) || []);
         filterIsCheckedMovies.length > countMovies ? setIsButtonMoreEnabled(true) : setIsButtonMoreEnabled(false);
     }, [countMovies, movies, isChecked, initialName]);
 
