@@ -46,7 +46,7 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
         }
         setFoundMovies(films);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [movies, initialName]);
+    }, [movies, initialName, isFirst]);
 
     return (
         <main className="movies">

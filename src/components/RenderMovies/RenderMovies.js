@@ -18,7 +18,7 @@ const RenderMovies = ({
   const notFoundMovies = (
     <h2 className="movies__card-list-title">{textError}</h2>
   );
-  const renderMovies = (filterShortMovies(movies, isChecked) || [])
+  const renderMovies = (filterShortMovies(movies || [], isChecked) || [])
     .slice(0, countMovies)
     .map((movie) => {
       return (
