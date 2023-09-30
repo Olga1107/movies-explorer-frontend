@@ -93,7 +93,8 @@ const Profile = ({
       onUpdateUser({
         email: email,
         name: username,
-      }).then(() => {
+      })
+      .then(() => {
         clearErrorSubmitApi();
       });
     }

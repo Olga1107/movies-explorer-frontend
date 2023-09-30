@@ -4,14 +4,17 @@ import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from './components/App/App';
 import reportWebVitals from './reportWebVitals';
+import { CurrentUserContext } from './contexts/CurrentUserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <CurrentUserContext.Provider value={{name: '', email: '', _id: '', isLoggedIn: false}}>  
     <BrowserRouter>
         <React.StrictMode>
             <App />
         </React.StrictMode>
-    </BrowserRouter>,
+    </BrowserRouter>
+  </CurrentUserContext.Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

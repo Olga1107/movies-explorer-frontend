@@ -8,18 +8,20 @@ import useMoviesDisplay from '../../utils/hooks/useMoviesDisplay';
 import Preloader from '../Preloader/Preloader';
 import { filterMovies } from '../../utils/utils';
 
-const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSearchError }) => {
+const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSearchError, getMovies }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [initialName, setInitialName] = useState('');
     const [foundMovies, setFoundMovies] = useState([]);
+    const [isFirst, setIsFirst] = useState(true);
+    const [textError, setTextError] = useState('');
     const { countMovies, isButtonMoreEnabled, handleButtonMore } = useMoviesDisplay({
-        movies,
+        movies: (isFirst ? JSON.parse(localStorage.getItem('movies')) : movies),
         isChecked,
         initialName,
     });
 
     const initialCheckbox = () => {
-        return (localStorage.getItem('checkbox') || '') === 'true';
+        return (localStorage.getItem('checkbox') === 'true');
     };
     const initialNameValue = () => {
         return localStorage.getItem('name') || '';
@@ -37,7 +39,13 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
     }, []);
 
     useEffect(() => {
-        setFoundMovies(filterMovies(movies, initialName));
+        const films = filterMovies(movies, initialName);
+        if (isFirst === false) {
+            setTextError(films.length === 0 ? 'Ничего не найдено' : '')
+            localStorage.setItem('movies', JSON.stringify(films));
+        }
+        setFoundMovies(films);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movies, initialName]);
 
     return (
@@ -48,17 +56,23 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
                 isChecked={isChecked}
                 initialName={initialNameValue}
                 handleInputChecked={setIsChecked}
+                getMovies={getMovies}
+                movies={movies}
+                setIsFirst={setIsFirst}
             />
             {isLoader ? <Preloader /> : ''}
             <MoviesCardList>
                 <RenderMovies
-                    movies={foundMovies}
+                    textError={textError}
+                    movies={isFirst ? JSON.parse(localStorage.getItem('movies')) : foundMovies}
                     isLoader={isLoader}
                     isChecked={isChecked}
                     countMovies={countMovies}
                     savedMovies={savedMovies}
                     pinMovie={pinMovie}
                     unpinMovie={unpinMovie}
+                    isFirst={isFirst}
+                    setTextError={setTextError}
                 />
             </MoviesCardList>
             {isButtonMoreEnabled ? <ButtonMore onClick={handleButtonMore} /> : ''}

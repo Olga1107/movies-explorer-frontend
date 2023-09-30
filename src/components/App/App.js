@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Routes,
   Route,
@@ -25,14 +25,10 @@ import { moviesApi } from '../../utils/MoviesApi';
 import { filterMovies } from '../../utils/utils';
 
 function App() {
+  const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState({
-    name: '',
-    isLoggedIn: true,
-    email: '',
-    _id: '',
-  });
+
   const [isLoader, setIsLoader] = useState(false);
   const [isProfileLoader, setIsProfileLoader] = useState(false);
   const [isLoginLoader, setIsLoginLoader] = useState(false);
@@ -46,6 +42,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const routesRedirectLogined = ['/signin', '/signup'];
+  const routesLoadSavedFilms = ['/saved-movies', '/movies'];
   const [savedMoviesLoaded, setSavedMoviesLoaded] = useState(false);
 
   const getLikedMoviesFromStorage = () => {
@@ -60,8 +57,6 @@ function App() {
   useEffect(() => {
     if (isTokenChecked && currentUser.isLoggedIn) {
       routesRedirectLogined.includes(location.pathname) && navigate('/movies');
-      getMovies();
-      getSavedMovies();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTokenChecked, currentUser.isLoggedIn]);
@@ -71,11 +66,10 @@ function App() {
       .getUser(token)
       .then((res) => {
         if (res) {
-          setCurrentUser({
-            ...currentUser,
-            isLoggedIn: true,
-            ...res.user,
-          });
+          currentUser.isLoggedIn = true;
+          currentUser.name = res.user.name;
+          currentUser.email = res.user.email;
+          currentUser._id = res.user._id;
         }
       })
       .catch((err) => {
@@ -86,7 +80,11 @@ function App() {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    let token;
+
+    if (currentUser.isLoggedIn === false ){
+      token = localStorage.getItem('token');
+    }
 
     if (token) {
       checkToken(token);
@@ -94,13 +92,16 @@ function App() {
       setIsTokenChecked(true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentUser.isLoggedIn]);
+  }, [currentUser]);
 
   const getUser = (token) => {
     return mainApi
       .getUser(token)
       .then((user) => {
-        setCurrentUser({ ...user, isLoggedIn: true });
+        currentUser.isLoggedIn = true;
+        currentUser.name = user.user.name;
+        currentUser.email = user.user.email;
+        currentUser._id = user.user._id;
       })
       .catch((err) => {
         onSignOut();
@@ -112,8 +113,16 @@ function App() {
     setIsProfileLoader(true);
     return mainApi
       .updateUser({ email, name })
+      // обработка когда промис
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+          setErrorSubmitApi(err.message);
+        });
+      })
       .then((data) => {
-        setCurrentUser({ ...currentUser, name: data.name, email: data.email });
+        currentUser.name = data.name;
+        currentUser.email = data.email;
         setInfoTooltipProps({
           ...infoTooltipProps,
           message: 'Данные успешно обновлены.',
@@ -124,10 +133,9 @@ function App() {
         infoTooltipOpen();
       })
       .catch((res) => {
-        res.then((err) => {
-          console.log(err.message);
-          setErrorSubmitApi(err.message);
-        });
+        // обработка ошибки НЕ промиса
+          console.log(res.message);
+          setErrorSubmitApi(res.message);
       })
       .finally(() => {
         setIsProfileLoader(false);
@@ -140,17 +148,16 @@ function App() {
       .authorize({ email, password })
       .then((data) => {
         localStorage.setItem('token', data.token);
-        setCurrentUser({ ...currentUser, isLoggedIn: true });
+        currentUser.isLoggedIn = true;
         getUser(data.token);
         navigate('/movies');
       })
-      .catch((res) => {
-        res.then((err) => {
-          setErrorSubmitApi(err.message);
-        });
+      .catch(async (err) => {
+          setErrorSubmitApi((await err).message);
       })
       .finally(() => {
         setIsLoginLoader(false);
+        setIsTokenChecked(true);
       });
   };
 
@@ -161,15 +168,12 @@ function App() {
       .then(() => {
         onLogin({ email, password });
       })
-      .catch((err) => {
-        if (err.statusCode === 400) {
-          setErrorSubmitApi('При регистрации пользователя произошла ошибка.');
-        } else {
-          setErrorSubmitApi(err.message);
-        }
+      .catch(async (err) => {
+          setErrorSubmitApi((await err).message);
       })
       .finally(() => {
         setIsRegisterLoader(false);
+        setIsTokenChecked(true);
       });
   };
 
@@ -179,7 +183,7 @@ function App() {
     localStorage.removeItem('checkbox');
     localStorage.removeItem('movies');
     setIsTokenChecked(false);
-    setCurrentUser({ name: '', isLoggedIn: false, email: '', _id: '' });
+    currentUser.isLoggedIn = false;
     navigate('/');
   };
 
@@ -221,6 +225,11 @@ function App() {
   const createMovie = (movie) => {
     return mainApi
       .createMovie({ ...movie })
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+        });
+      })
       .then((createdMovie) => {
         setSavedMovies([...savedMovies, createdMovie]);
 
@@ -231,15 +240,18 @@ function App() {
         saveLikedMoviesToStorage(newLikedMovies);
       })
       .catch((res) => {
-        res.then((err) => {
-          console.log(err.message);
-        });
+        console.log(res.message);
       });
   };
 
   const removeMovie = (movie) => {
     return mainApi
       .removeMovie(movie)
+      .catch((res) => {
+        res.then((err) => {
+          console.log(err.message);
+        });
+      })
       .then(() => {
         setSavedMovies(savedMovies.filter((item) => item._id !== movie._id));
 
@@ -250,11 +262,7 @@ function App() {
         saveLikedMoviesToStorage(newLikedMovies);
       })
       .catch((res) => {
-        res.then((err) => {
-          debugger;
-          console.log(err.message);
-          console.log(movie._id);
-        });
+        console.log(res.message);
       });
   };
 
@@ -296,14 +304,24 @@ function App() {
   };
 
   useEffect(() => {
+    setErrorSubmitApi('')
+
     if (routesFootersDisabled.includes(location.pathname)) {
       setIsFooterDisabled(true);
     } else {
       setIsFooterDisabled(false);
-    }
+    } 
+
     if (routesHeaderDisabled.includes(location.pathname)) {
       setIsHeaderDisabled(true);
+    } else {
+      setIsHeaderDisabled(false);
     }
+
+    if (routesLoadSavedFilms.includes(location.pathname)) {
+      getSavedMovies();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
 
@@ -312,7 +330,6 @@ function App() {
   };
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
       <div className="App">
         {!isHeaderDisabled && <Header isLoggedIn={currentUser.isLoggedIn} />}
         <Routes>
@@ -344,8 +361,7 @@ function App() {
                 onInputSearchError={onInputSearchError}
                 errorGetMoviesPopupOpen={errorGetMoviesPopupOpen}
                 isTokenChecked={isTokenChecked}
-                // movies={savedMovies}
-                movies={movies.slice(0.4)}
+                movies={savedMovies}
                 unpinMovie={removeMovie}
                 isLoader={isLoader}
               />
@@ -404,7 +420,6 @@ function App() {
           onSubmit={infoTooltipProps.onSubmit}
         />
       </div>
-    </CurrentUserContext.Provider>
   );
 }
 

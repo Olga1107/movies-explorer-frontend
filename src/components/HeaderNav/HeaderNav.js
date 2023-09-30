@@ -15,6 +15,10 @@ const HeaderNav = ({ isMain }) => {
         setIsBurgerClose((state) => !state);
     };
 
+    const onLinkClick = () => {
+        setIsBurgerClose(false);
+    };
+
     useEffect(() => {
         setIsBurgerClose(false);
     }, []);
@@ -24,13 +28,13 @@ const HeaderNav = ({ isMain }) => {
             <div className={`navigation__container${classNavigationContainerMenu}`}>
                 <button className={`navigation__button ${classBurgerMenu}`} onClick={onButtonBurgerClick} type="button"></button>
                 <nav className={`navigation__links ${classNavigationLinksMenu}`}>
-                    <NavLink to="/" className={`${classLink} navigation__link_type_home`} onClick={onButtonBurgerClick}>
+                    <NavLink to="/" className={`${classLink} navigation__link_type_home`} onClick={onLinkClick}>
                         Главная
                     </NavLink>
-                    <NavLink to="/movies" className={classLink} onClick={onButtonBurgerClick}>
+                    <NavLink to="/movies" className={classLink} onClick={onLinkClick}>
                         Фильмы
                     </NavLink>
-                    <NavLink to="/saved-movies" className={classLink} onClick={onButtonBurgerClick}>
+                    <NavLink to="/saved-movies" className={classLink} onClick={onLinkClick}>
                         Сохранённые фильмы
                     </NavLink>
                 </nav>

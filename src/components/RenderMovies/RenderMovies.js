@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { filterShortMovies } from '../../utils/utils';
 
@@ -11,11 +11,14 @@ const RenderMovies = ({
   unpinMovie,
   countMovies = movies.length,
   mode,
+  isFirst,
+  setTextError,
+  textError
 }) => {
   const notFoundMovies = (
-    <h2 className="movies__card-list-title">Ничего не найдено</h2>
+    <h2 className="movies__card-list-title">{textError}</h2>
   );
-  const renderMovies = filterShortMovies(movies, isChecked)
+  const renderMovies = (filterShortMovies(movies, isChecked) || [])
     .slice(0, countMovies)
     .map((movie) => {
       return (
@@ -29,6 +32,12 @@ const RenderMovies = ({
         />
       );
     });
+
+    useEffect(() => {
+      if (isFirst === false) {
+        setTextError(renderMovies.length === 0 ? 'Ничего не найдено' : '')
+      }
+    }, [isChecked, renderMovies, isFirst, setTextError])
 
   return (
     <>
