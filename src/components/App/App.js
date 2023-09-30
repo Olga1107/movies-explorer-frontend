@@ -74,7 +74,7 @@ function App() {
           setCurrentUser({
             ...currentUser,
             isLoggedIn: true,
-            ...res,
+            ...res.user,
           });
         }
       })
@@ -298,6 +298,8 @@ function App() {
   useEffect(() => {
     if (routesFootersDisabled.includes(location.pathname)) {
       setIsFooterDisabled(true);
+    } else {
+      setIsFooterDisabled(false);
     }
     if (routesHeaderDisabled.includes(location.pathname)) {
       setIsHeaderDisabled(true);

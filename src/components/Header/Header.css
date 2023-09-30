@@ -38,10 +38,14 @@
 }
 
 .header__container {
-  align-items: center;
+  /*align-items: center;*/
   box-sizing: border-box;
-  display: grid;
-  grid-template-columns: auto 1fr;
+  /*display: grid;*/
+  /*grid-template-columns: auto 1fr;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   min-height: 74px;
   padding: 0 16px;
   position: relative;

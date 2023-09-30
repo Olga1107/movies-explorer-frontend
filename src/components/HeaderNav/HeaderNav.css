@@ -25,6 +25,7 @@
 .navigation__container {
   display: grid;
   width: 100%;
+  max-width: 520px;
 }
 
 @media screen and (min-width: 768.1px) {
@@ -63,6 +64,13 @@
   row-gap: 24px;
   align-content: start;
   justify-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__links {
+    padding-top: 100px;
+    row-gap: 26px;
+  }
 }
 
 @media screen and (min-width: 768px) {
@@ -223,14 +231,21 @@
 
 .navigation__button_type_close {
   position: relative;
-  top: 15px;
-  right: 15px;
+  top: 0px;
+  right: 0px;
   padding: 0;
   width: 44px;
   height: 44px;
   background-image: url(../../images/CLOSE.svg);
-  background-size: 44px;
+  background-size: 30px;
   background-position: center;
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__button_type_close {
+    top: 7%;
+    right: 7px;
+  }
 }
 
 @media screen and (min-width: 768px) {

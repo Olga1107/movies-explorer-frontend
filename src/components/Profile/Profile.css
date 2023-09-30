@@ -3,7 +3,7 @@
   margin: auto;
 
   color: #fff;
-  font-family: Inter;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
 }
 
 .auth__form_type_profile-error-messages {
@@ -24,6 +24,6 @@
 .auth__form_type_profile {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   min-height: calc(100vh - 74px);
 }
