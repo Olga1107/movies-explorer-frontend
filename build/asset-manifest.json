@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.9e0a0562.css",
+    "main.css": "/static/css/main.78ee0a4e.css",
     "main.js": "/static/js/main.a4eaf691.js",
     "static/js/787.5fef94a4.chunk.js": "/static/js/787.5fef94a4.chunk.js",
     "static/media/avatar.jpg": "/static/media/avatar.faa58883d0b773f6d28b.jpg",
@@ -23,14 +23,14 @@
     "static/media/icon-burger.svg": "/static/media/icon-burger.bc3f6448b5d51ce28967.svg",
     "static/media/CLOSE.svg": "/static/media/CLOSE.4828fddbd650ab863f28.svg",
     "static/media/arrow.svg": "/static/media/arrow.2ea90abb32b723c2c0e7.svg",
+    "static/media/smalltumboff.svg": "/static/media/smalltumboff.01812340b1af8e2ad27b.svg",
     "static/media/tumb__COLOR_tumbler-on.svg": "/static/media/tumb__COLOR_tumbler-on.b283bd987589383e1be2.svg",
-    "static/media/smalltumboff.svg": "/static/media/smalltumboff.9dd01b250d8392f781aa.svg",
-    "main.9e0a0562.css.map": "/static/css/main.9e0a0562.css.map",
+    "main.78ee0a4e.css.map": "/static/css/main.78ee0a4e.css.map",
     "main.a4eaf691.js.map": "/static/js/main.a4eaf691.js.map",
     "787.5fef94a4.chunk.js.map": "/static/js/787.5fef94a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e0a0562.css",
+    "static/css/main.78ee0a4e.css",
     "static/js/main.a4eaf691.js"
   ]
 }
