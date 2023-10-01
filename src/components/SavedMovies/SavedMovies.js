@@ -5,25 +5,18 @@ import SearchForm from '../SearchForm/SearchForm';
 import RenderMovies from '../RenderMovies/RenderMovies';
 import Preloader from '../Preloader/Preloader';
 import { filterMovies } from '../../utils/utils';
-import useMoviesDisplay from '../../utils/hooks/useMoviesDisplay';
-import ButtonMore from '../ButtonMore/ButtonMore';
-
 
 const SavedMovies = ({ movies, isLoader, unpinMovie, onInputSearchError }) => {
     const [isChecked, setIsChecked] = useState(false);
     const [foundMovies, setFoundMovies] = useState([]);
     const [isFirst, setIsFirst] = useState(true);
     const [textError, setTextError] = useState('Вы ещё ничего не добавили')
-    const { countMovies, isButtonMoreEnabled, handleButtonMore } = useMoviesDisplay({
-        movies: foundMovies,
-        isChecked,
-        initialName: '',
-    });
+    const [query, setQuery] = useState('')
 
-
-    const handleSearchSubmit = (name, isChecked) => {
+    const handleSearchSubmit = (name = query, isCheckedNew = isChecked) => {
+        setQuery(name)
         setFoundMovies(filterMovies(movies, name));      
-        setIsChecked(isChecked);
+        setIsChecked(isCheckedNew);
     };
 
 
@@ -34,7 +27,8 @@ const SavedMovies = ({ movies, isLoader, unpinMovie, onInputSearchError }) => {
     }, [foundMovies, isFirst, isChecked])
 
     useEffect(() => {
-        setFoundMovies(movies);
+        handleSearchSubmit();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movies]);
 
     return (
@@ -55,13 +49,11 @@ const SavedMovies = ({ movies, isLoader, unpinMovie, onInputSearchError }) => {
                     textError={textError}
                     movies={foundMovies}
                     isLoader={isLoader}
-                    countMovies={countMovies}
                     isChecked={isChecked}
                     unpinMovie={unpinMovie}
                     mode="liked"
                 />
             </MoviesCardList>
-            {isButtonMoreEnabled ? <ButtonMore onClick={handleButtonMore} /> : ''}
         </main>
     );
 };

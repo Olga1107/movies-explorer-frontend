@@ -3,7 +3,7 @@
   margin: auto;
 
   color: #fff;
-  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-family: Inter;
 }
 
 .auth__form_type_profile-error-messages {
@@ -26,4 +26,11 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: calc(100vh - 74px);
+}
+
+@media screen and (max-width: 900px) {
+  .auth__form_type_profile{
+    max-height: 445px;
+  }
+  
 }

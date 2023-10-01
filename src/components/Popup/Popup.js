@@ -21,6 +21,7 @@ const Popup = ({ name, isOpen, onClose, children }) => {
 
     useEffect(() => {
         isOpen ? setHandleEscClosePopup() : removeHandleEscClosePopup();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isOpen]);
 
     return (

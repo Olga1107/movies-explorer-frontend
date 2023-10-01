@@ -13,8 +13,8 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
     const [initialName, setInitialName] = useState('');
     const [foundMovies, setFoundMovies] = useState([]);
     const [isFirst, setIsFirst] = useState(true);
-    const [textError, setTextError] = useState('');
-    const { countMovies, isButtonMoreEnabled, handleButtonMore } = useMoviesDisplay({
+    const [textError, setTextError] = useState('')
+    const { countMovies, isButtonMoreEnabled, handleButtonMore, setDefaultButtonMore } = useMoviesDisplay({
         movies: (isFirst ? JSON.parse(localStorage.getItem('movies')) : movies),
         isChecked,
         initialName,
@@ -29,6 +29,7 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
 
     const handleSearchSubmit = (name, isChecked) => {
         localStorage.setItem('name', name);
+        setDefaultButtonMore();
         setInitialName(name);
         setIsChecked(isChecked);
     };
@@ -39,7 +40,8 @@ const Movies = ({ movies, savedMovies, pinMovie, unpinMovie, isLoader, onInputSe
     }, []);
 
     useEffect(() => {
-        const films = filterMovies(movies, initialName);
+        const films = filterMovies(movies, initialName);      
+
         if (isFirst === false) {
             setTextError(films.length === 0 ? 'Ничего не найдено' : '')
             localStorage.setItem('movies', JSON.stringify(films));

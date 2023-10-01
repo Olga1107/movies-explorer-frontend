@@ -73,6 +73,7 @@
   }
 }
 
+
 @media screen and (min-width: 768px) {
   .navigation__links {
     row-gap: 28px;
@@ -247,6 +248,7 @@
     right: 7px;
   }
 }
+
 
 @media screen and (min-width: 768px) {
   .navigation__button_type_close {

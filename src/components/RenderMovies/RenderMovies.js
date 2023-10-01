@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
 import { filterShortMovies } from '../../utils/utils';
 
 const RenderMovies = ({
   isLoader,
-  movies,
+  movies ,
   savedMovies,
   isChecked,
   pinMovie,
@@ -15,10 +15,15 @@ const RenderMovies = ({
   setTextError,
   textError
 }) => {
+
+  const [renderMovies, setRenderMovies] = useState([]);
+
   const notFoundMovies = (
     <h2 className="movies__card-list-title">{textError}</h2>
   );
-  const renderMovies = (filterShortMovies(movies || [], isChecked) || [])
+
+  useEffect(() => {
+    setRenderMovies((filterShortMovies(movies || [], isChecked))
     .slice(0, countMovies)
     .map((movie) => {
       return (
@@ -31,14 +36,15 @@ const RenderMovies = ({
           mode={mode}
         />
       );
-    });
-
-    useEffect(() => {
-      if (isFirst === false) {
-        setTextError(renderMovies.length === 0 ? 'Ничего не найдено' : '')
-      }
-    }, [isChecked, renderMovies, isFirst, setTextError])
-
+    }))
+  }, [movies, isChecked, countMovies, mode, pinMovie, unpinMovie, savedMovies])
+  
+  useEffect(() => {
+    if (isFirst === false) {
+      setTextError(renderMovies.length === 0 ? 'Ничего не найдено' : '')
+    }
+  }, [isChecked, renderMovies, isFirst, setTextError])
+    
   return (
     <>
       {!isLoader ? (
