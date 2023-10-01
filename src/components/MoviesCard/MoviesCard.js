@@ -22,7 +22,8 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie, mode }) => {
       );
       setLiked(isOwner);
     }
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [savedMovies, location, currentUser]);
 
   const handleButton = () => {
     if (location.pathname === '/movies') {
@@ -48,7 +49,8 @@ const MoviesCard = ({ movie, savedMovies, pinMovie, unpinMovie, mode }) => {
   const urlImage =
     location.pathname === '/movies'
       ? `${BASE_IMAGE_URL}${movie.image.url}`
-      : movie.image;
+      : // : `${BASE_IMAGE_URL}${movie.image.url}`;
+        movie.image;
   const trailerLink = movie.trailerLink;
 
   return (

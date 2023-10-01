@@ -24,6 +24,7 @@ const Register = ({ isLoader, onRegister, errorSubmitApi }) => {
     const isPasswordValid = validatePassword(password) === '';
     const isNameValid = validateName(name) === '';
     setIsFormValid(isEmailValid && isPasswordValid && isNameValid && !isLoader);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email, password, name, isLoading]);
 
   const handleSubmit = (evt) => {

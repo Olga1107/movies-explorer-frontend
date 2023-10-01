@@ -16,6 +16,7 @@ const Header = ({ isLoggedIn }) => {
     useEffect(() => {
         location.pathname === '/' ? setIsTypeMain(true) : setIsTypeMain(false);
         typesAuth.includes(location.pathname) ? setIsTypeAuth(true) : setIsTypeAuth(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
     return (

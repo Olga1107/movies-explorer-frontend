@@ -93,8 +93,7 @@ const Profile = ({
       onUpdateUser({
         email: email,
         name: username,
-      })
-      .then(() => {
+      }).then(() => {
         clearErrorSubmitApi();
       });
     }
@@ -103,6 +102,7 @@ const Profile = ({
   const toggleEditing = () => {
     setIsEditMode((prevMode) => !prevMode);
   };
+
 
   return (
     <main className="auth">

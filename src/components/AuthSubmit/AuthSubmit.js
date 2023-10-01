@@ -25,6 +25,7 @@ const AuthSubmit = ({
     isProfile ? ' auth__link_type_profile' : ''
   }`;
   const linkTextUrl = isProfile ? (
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     <a onClick={onSignOut} className={classLink}>
       {textLink}
     </a>

@@ -8,6 +8,8 @@
     margin-bottom: 70px;
 }
 
+
+
 @media screen and (max-width: 900px) {
     .auth__submit-container_type_profile {
         margin-bottom: 270px;
@@ -19,6 +21,8 @@
         margin-bottom: 43px;
     }
 }
+
+  
 
 .auth__button-submit {
     padding: 15px;

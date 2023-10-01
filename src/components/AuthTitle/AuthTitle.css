@@ -16,7 +16,7 @@
 }
 
 .auth__title_type_protfile {
-  padding: 235px 0 100px;
+  padding: 70px 0 83px;
 }
 
 @media screen and (min-width: 600px) {
@@ -24,6 +24,7 @@
     padding: 235px 0 100px;
   }
 }
+
 
 @media screen and (min-width: 769px) {
   .auth__title_type_protfile {

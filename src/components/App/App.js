@@ -188,8 +188,10 @@ function App() {
   };
 
   const getSavedMovies = (name = '') => {
+    setIsLoader(true);
     if (savedMoviesLoaded) {
       setSavedMovies([...filterMovies(savedMovies, name)]);
+      setIsLoader(false);
     } else {
       mainApi
         .getMovies()
@@ -199,7 +201,10 @@ function App() {
         })
         .catch((err) => {
           console.log(err.message);
-        });
+        })
+        .finally(() => {
+          setIsLoader(false);
+        })
     }
   };
 

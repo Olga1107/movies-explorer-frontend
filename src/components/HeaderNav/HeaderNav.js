@@ -15,7 +15,7 @@ const HeaderNav = ({ isMain }) => {
         setIsBurgerClose((state) => !state);
     };
 
-    const onLinkClick = () => {
+    const onLinkClick= () => {
         setIsBurgerClose(false);
     };
 
