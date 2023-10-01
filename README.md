@@ -6,4 +6,4 @@
 
 Ссылка на сайт - [**Movies Explorer**](https://helga.movies.nomoredomains.xyz)
 
-Ссылка на pull request- [**Git - Pull request**](https://github.com/Olga1107/movies-explorer-frontend/pull/18)
+Ссылка на pull request- [**Git - Pull request**](https://github.com/Olga1107/movies-explorer-frontend/pull/20)
